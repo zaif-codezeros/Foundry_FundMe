@@ -6,15 +6,15 @@ import {FundMe} from "../src/FundMe.sol";
 import {Help} from "./help.s.sol";
 
 contract FundmeDeploy is Script {
-    function run() external returns (FundMe) {
+    function run() external returns (FundMe , uint256) {
 
         Help help = new Help();
-        address priceFeedAddress = help.activenetwork();
+        (address priceFeedAddress , uint256 version) = help.activenetwork();
         
         vm.startBroadcast();
         FundMe fundMe = new FundMe(priceFeedAddress);
         vm.stopBroadcast();
-        return fundMe;
+        return (fundMe, version);
 
     }
 }

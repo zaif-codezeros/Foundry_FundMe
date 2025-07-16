@@ -7,11 +7,12 @@ import {FundmeDeploy} from "../script/Deploy.s.sol";
 
 contract FundMeTest is Test{
     FundMe fundMe;
+    uint256 addVersion;
     
     function setUp() external {
         //fundMe = new FundMe(0x694AA1769357215DE4FAC081bf1f309aDC325306);
         FundmeDeploy deployFundme = new FundmeDeploy();
-        fundMe = deployFundme.run();
+        (fundMe , addVersion) = deployFundme.run();
     }
 
     function testMinUsd() public view {
@@ -26,7 +27,7 @@ contract FundMeTest is Test{
 
     function testversion() public view {
         uint256 version = fundMe.getVersion();
-        assertEq(version,4);
+        assertEq(version,addVersion);
         console.log("Chainlink price feed version:", version);
     }
 }
