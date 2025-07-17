@@ -49,7 +49,8 @@ contract Help is Script {
         vm.stopBroadcast();
 
         NetworkConfig memory anvilconfig = NetworkConfig({
-            priceFeed: address(mockPricefeed), version : 0 // Mock Price Feed for Anvil
+            priceFeed: address(mockPricefeed), version : 4// Mock Price Feed for Anvil
         });
+        return anvilconfig;
     }
 }

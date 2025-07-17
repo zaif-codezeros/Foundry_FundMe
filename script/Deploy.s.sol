@@ -13,6 +13,7 @@ contract FundmeDeploy is Script {
         
         vm.startBroadcast();
         FundMe fundMe = new FundMe(priceFeedAddress);
+        console.log("Deploy contract owner", msg.sender);
         vm.stopBroadcast();
         return (fundMe, version);
 

@@ -1,0 +1,4 @@
+FundMeTest:testMinUsd() (gas: 12190)
+FundMeTest:testOwner() (gas: 14537)
+FundMeTest:testcalculateGasPrice() (gas: 5948)
+FundMeTest:testversion() (gas: 19869)

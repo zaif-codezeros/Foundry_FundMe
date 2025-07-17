@@ -8,6 +8,8 @@ import {FundmeDeploy} from "../script/Deploy.s.sol";
 contract FundMeTest is Test{
     FundMe fundMe;
     uint256 addVersion;
+    uint256 gasprice;
+
     
     function setUp() external {
         //fundMe = new FundMe(0x694AA1769357215DE4FAC081bf1f309aDC325306);
@@ -30,4 +32,10 @@ contract FundMeTest is Test{
         assertEq(version,addVersion);
         console.log("Chainlink price feed version:", version);
     }
+
+    function testcalculateGasPrice() public {
+        gasprice = tx.gasprice;
+        console.log("Current gas price:", gasprice);
+    }
+
 }

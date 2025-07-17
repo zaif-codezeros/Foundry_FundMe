@@ -4,6 +4,7 @@ pragma solidity ^0.8.18;
 // Note: The AggregatorV3Interface might be at a different location than what was in the video!
 import {AggregatorV3Interface} from "lib/chainlink-evm/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 import {PriceConverter} from "./PriceConverter.sol";
+import {console} from "forge-std/console.sol";
 
 error NotOwner();
 
@@ -21,6 +22,8 @@ contract FundMe {
     constructor(address priceFeedAddress) {
         i_owner = msg.sender;
         priceFeed = AggregatorV3Interface(priceFeedAddress);
+        console.log("fundme address:", address(this));
+        console.log("fundme owner:", i_owner);
     }
 
     function fund() public payable {
