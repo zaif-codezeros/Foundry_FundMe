@@ -39,6 +39,11 @@ contract Help is Script {
     }
 
     function getAnvilconfig() public  returns (NetworkConfig memory) {
+        
+        if(activenetwork.priceFeed != address(0)) {
+            return activenetwork; // Return existing config if already set
+        }
+        
         vm.startBroadcast();
         MockV3Aggregator mockPricefeed = new MockV3Aggregator(8, 2000e8); // 2000 USD in 8 decimals
         vm.stopBroadcast();
