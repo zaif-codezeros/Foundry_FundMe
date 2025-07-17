@@ -22,9 +22,30 @@ contract FundFundMe is Script {
             "FundMe",
             block.chainid
         );
+        fundFundMe(mostRecentDeploy);
     }
 
 
 }
 
-contract withdrawFundMe is Script {}
+contract withdrawFundMe is Script {
+
+    uint256 constant SEND_VALUE = 1e18; // 1 ETH in wei
+
+    function withdrawFundme(address mostRecentDeploy) public {
+        vm.startBroadcast();
+        FundMe(payable(mostRecentDeploy)).withdraw();
+        vm.stopBroadcast();
+    }
+
+
+    function run() external {
+        address mostRecentDeploy = DevOpsTools
+        .get_most_recent_deployment(
+            "FundMe",
+            block.chainid
+        );
+        withdrawFundme(mostRecentDeploy);
+    }
+
+}

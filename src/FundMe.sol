@@ -79,6 +79,10 @@ contract FundMe {
     receive() external payable {
         fund();
     }
+
+    function getFunder(uint256 index) public view returns (address) {
+        return funders[index];
+    }
 }
 
 // Concepts we didn't cover yet (will cover in later sections)
